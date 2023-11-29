@@ -1,9 +1,5 @@
 ﻿using EFBasicExample.Entity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EFBasicExample
 {
@@ -113,6 +109,7 @@ namespace EFBasicExample
 
             */
             //Category Hepsini Getirme
+            /*
             if (categoryCrud.GetList().Count > 0)
             {   
                 foreach (var item in categoryCrud.GetList())
@@ -124,6 +121,18 @@ namespace EFBasicExample
             {
                 Console.WriteLine("Kategori Listesi boş");
             }
+
+            */
+
+            var category = new Category()
+            {
+                Name = "Televizyon",
+                Description = "Televizyon Kategori"
+            };
+            if (categoryCrud.Update(category,2))
+            {
+                Console.WriteLine("Düzenleme başarılı");
+            }else { Console.WriteLine("Düzenleme Başarısız"); }
             Console.ReadLine();
             
 

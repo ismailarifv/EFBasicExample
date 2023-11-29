@@ -12,7 +12,7 @@ namespace EFBasicExample.Entity.Interfaces
 
         T Get(int id);
         bool Add(T entity);
-        bool Update(T entity);
+        bool Update(T entity,int id);
         bool Delete(int id);
 
     }

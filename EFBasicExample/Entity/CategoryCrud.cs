@@ -52,9 +52,17 @@ namespace EFBasicExample.Entity
             return db.Category.Where(x=>x.IsDelete==false).ToList();
         }
 
-        public bool Update(Category entity)
+        public bool Update(Category entity,int id)
         {
-            throw new NotImplementedException();
+            var category = db.Category.Find(id);
+            if (category != null && !category.IsDelete)
+            {
+                category.Name = entity.Name;
+                category.Description = entity.Description;
+                db.SaveChanges();
+                return true;
+            }
+            return false;
         }
     }
 }

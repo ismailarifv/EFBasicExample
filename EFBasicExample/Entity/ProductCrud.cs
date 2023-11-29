@@ -30,7 +30,7 @@ namespace EFBasicExample.Entity
             throw new NotImplementedException();
         }
 
-        public bool Update(Product entity)
+        public bool Update(Product entity, int id)
         {
             throw new NotImplementedException();
         }
