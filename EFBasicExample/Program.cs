@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EFBasicExample.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace EFBasicExample
     {
         static void Main(string[] args)
         {
-            DataContext db = new DataContext();
+            //DataContext db = new DataContext();
 
             /*Category category = new Category()
             {
@@ -65,11 +66,67 @@ namespace EFBasicExample
               }
               
               */
-
+            /*
             var deleteCategory = db.Category.Find(3);
             db.Category.Remove(deleteCategory);
             db.SaveChanges();
             Console.ReadLine();
+            */
+
+            ////////////////////////////////////////Burası interface filan filan
+            ///
+
+            CategoryCrud categoryCrud = new CategoryCrud();
+            /*
+             //Category Ekleme
+            Category category = new Category()
+            {
+                Name="Tablet",
+                Description="Tablet Kategorisi"
+            };
+
+            Console.WriteLine(categoryCrud.Add(category)?"Kategori Ekleme Başarılı":"Ekleme Başarısız");
+            */
+            /*
+             //Category Silme
+            if (categoryCrud.Delete(4))
+            {
+                Console.WriteLine("Silme işlemi başarılı");
+            }
+            else
+            {
+                Console.WriteLine("Silme işlemi başarısız");
+            }
+            */
+            //Category Getirme
+            /*
+            var category = categoryCrud.Get(2);
+
+            if (category !=null ) 
+            {
+                Console.WriteLine($"Name: {category.Name}");
+            }
+            else
+            {
+                Console.WriteLine("Category bulunamadı");
+            }
+
+            */
+            //Category Hepsini Getirme
+            if (categoryCrud.GetList().Count > 0)
+            {   
+                foreach (var item in categoryCrud.GetList())
+                {
+                    Console.WriteLine($"Name: {item.Name} \t\t Status: {item.IsStatus}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Kategori Listesi boş");
+            }
+            Console.ReadLine();
+            
+
         }
     }
 }
