@@ -12,27 +12,60 @@ namespace EFBasicExample.Entity
         DataContext db = new DataContext();
         public bool Add(Product entity)
         {
-            throw new NotImplementedException();
+
+            if (entity != null)
+            {
+                entity.IsStatus = true;
+                entity.IsDelete = false;
+                entity.Image = null;
+                db.Product.Add(entity);
+                db.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            var product = db.Product.Find(id);
+            if (product != null)
+            {
+                //category.IsStatus = true;
+                db.Product.Remove(product);
+                db.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
         public Product Get(int id)
         {
-            throw new NotImplementedException();
+            var product = db.Product.Find(id);
+            if (product != null && !product.IsDelete)
+            {
+                return product;
+            }
+            return null;
         }
 
         public List<Product> GetList()
         {
-            throw new NotImplementedException();
+            return db.Product.Where(x => x.IsDelete == false).ToList();
         }
 
         public bool Update(Product entity, int id)
         {
-            throw new NotImplementedException();
+            var product = db.Product.Find(id);
+            if (product != null && !product.IsDelete)
+            {
+                product.Name = entity.Name;
+                product.Description = entity.Description;
+                product.Stock = entity.Stock;
+                product.Price = entity.Price;
+                db.SaveChanges();
+                return true;
+            }
+            return false;
         }
     }
 }

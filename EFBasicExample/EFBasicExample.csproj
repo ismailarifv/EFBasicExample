@@ -56,8 +56,10 @@
     <Compile Include="Category.cs" />
     <Compile Include="CommonProperty.cs" />
     <Compile Include="DataContext.cs" />
+    <Compile Include="Entity\CategoryController.cs" />
     <Compile Include="Entity\CategoryCrud.cs" />
     <Compile Include="Entity\Interfaces\ICrud.cs" />
+    <Compile Include="Entity\ProductController.cs" />
     <Compile Include="Entity\ProductCrud.cs" />
     <Compile Include="Migrations\202311281200064_dbCreateMg.cs" />
     <Compile Include="Migrations\202311281200064_dbCreateMg.designer.cs">
